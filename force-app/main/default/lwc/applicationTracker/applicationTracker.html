@@ -1,0 +1,76 @@
+<template>
+
+    <div class="background">
+
+        <div class="tracker-container">
+
+            <h2 class="title">Application Status</h2>
+
+            <template if:true={enquiry}>
+
+                <div class="status-banner">
+
+                    <p>
+                        <strong>Enquiry No:</strong> {enquiry.Name}
+                    </p>
+
+                    <p>
+                        <strong>Department:</strong> {enquiry.Department__r.Name}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        <lightning-badge label={enquiry.Admission_Status__c}></lightning-badge>
+                    </p>
+
+                    <p>
+                        <strong>Eligible:</strong> {enquiry.Is_Eligible__c}
+                    </p>
+
+                </div>
+
+                <div class="doc-section">
+
+                    <h3>Document Submission</h3>
+
+                    <template for:each={docTypes} for:item="docType">
+
+                        <div key={docType.value} class="doc-row">
+
+                            <p>{docType.label}</p>
+
+                            <lightning-file-upload
+                                label="Upload File"
+                                name={docType.value}
+                                record-id={enquiry.Id}
+                                accept=".pdf,.jpg,.png"
+                                data-type={docType.value}
+                                onuploadfinished={handleUploadFinished}
+                                disabled={docType.submitted}>
+                            </lightning-file-upload>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+                <!-- Submit Documents Button -->
+
+                <div class="submit-area">
+
+                    <lightning-button
+                        label="Submit Documents"
+                        variant="brand"
+                        onclick={submitDocuments}>
+                    </lightning-button>
+
+                </div>
+
+            </template>
+
+        </div>
+
+    </div>
+
+</template>

@@ -1,0 +1,36 @@
+<template>
+  <div class="fee-container">
+    <h2 class="title">Fee Payment</h2>
+    <template if:false={isSubmitted}>
+      <p class="dept-fee">Amount Due: <strong>{enquiryFee}</strong></p>
+      <lightning-combobox label="Payment Mode" value={payMode}
+          options={modeOptions} onchange={handleMode} required>
+      </lightning-combobox>
+      <lightning-input label="Payment Reference Number" value={payRef}
+          onchange={handleRef} placeholder="Bank/UPI/DD reference" required>
+      </lightning-input>
+      <lightning-input type="number" label="Amount Paid" value={amountPaid}
+          onchange={handleAmount} min="0" step="0.01" required>
+      </lightning-input>
+      <lightning-input type="date" label="Payment Date" value={payDate}
+          onchange={handleDate} required>
+      </lightning-input>
+      <lightning-input type="checkbox" label="I confirm receipt is ready for upload"
+          checked={receiptReady} onchange={handleReceipt}>
+      </lightning-input>
+      <template if:true={errorMessage}>
+        <p class="error-msg">{errorMessage}</p>
+      </template>
+      <lightning-button label="Submit Payment Details" variant="brand"
+          onclick={handleSubmit} disabled={isLoading}>
+      </lightning-button>
+    </template>
+    <template if:true={isSubmitted}>
+      <div class="success-box">
+        <p>Payment details submitted. Reference: <strong>{payRef}</strong></p>
+        <p>Awaiting admin verification. You will receive a confirmation email once verified.</p>
+      </div>
+    </template>
+  </div>
+</template>
+ 

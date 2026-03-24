@@ -1,0 +1,36 @@
+<template>
+  <div class="checker-container">
+    <h2 class="title">Check Your Eligibility</h2>
+    <lightning-combobox
+        label="Select Department"
+        placeholder="-- Choose a Department --"
+        value={selectedDeptId}
+        options={deptOptions}
+        onchange={handleDeptChange}>
+    </lightning-combobox>
+    <lightning-input type="number" label="10th Percentage"
+        value={tenth} onchange={handleTenth} min="0" max="100" step="0.01">
+    </lightning-input>
+    <lightning-input type="number" label="12th Percentage"
+        value={twelfth} onchange={handleTwelfth} min="0" max="100" step="0.01">
+    </lightning-input>
+    <template if:true={isPG}>
+        <lightning-input type="number" label="UG Percentage"
+            value={ugPercent} onchange={handleUG} min="0" max="100" step="0.01">
+        </lightning-input>
+    </template>
+    <lightning-button label="Check Eligibility" variant="brand"
+        onclick={checkEligibility} class="check-btn">
+    </lightning-button>
+    <template if:true={resultShown}>
+        <div class={resultClass}>
+            <p class="result-text">{resultMessage}</p>
+            <template if:true={isEligible}>
+                <lightning-button label="Apply Now" variant="success"
+                    onclick={handleApply}>
+                </lightning-button>
+            </template>
+        </div>
+    </template>
+  </div>
+</template>

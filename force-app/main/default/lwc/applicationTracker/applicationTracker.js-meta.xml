@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <apiVersion>59.0</apiVersion>
+
+    <isExposed>true</isExposed>
+
+    <targets>
+
+        <target>lightningCommunity__Page</target>
+
+        <target>lightningCommunity__Default</target>
+
+        <target>lightning__AppPage</target>
+
+        <target>lightning__RecordPage</target>
+
+        <target>lightning__HomePage</target>
+
+    </targets>
+
+
+    <targetConfigs>
+
+        <targetConfig targets="lightningCommunity__Default,lightning__AppPage,lightning__HomePage">
+
+            <property
+                name="title"
+                type="String"
+                label="Section Title"
+                default="My Application Status"/>
+
+            <property
+                name="showDocumentSection"
+                type="Boolean"
+                label="Show Document Upload Section"
+                default="false"/>
+
+            <!-- Required by Experience Builder configuration -->
+            <property
+                name="showProgressBar"
+                type="Boolean"
+                label="Show Progress Bar"
+                default="false"/>
+
+            <property
+                name="maxDocuments"
+                type="Integer"
+                label="Maximum Documents"
+                default="6"/>
+
+        </targetConfig>
+
+
+        <targetConfig targets="lightning__RecordPage">
+
+            <property
+                name="title"
+                type="String"
+                label="Section Title"
+                default="Application Tracker"/>
+
+        </targetConfig>
+
+    </targetConfigs>
+
+</LightningComponentBundle>

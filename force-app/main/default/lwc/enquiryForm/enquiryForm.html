@@ -1,0 +1,80 @@
+<template>
+  <div class="form-container">
+    <h2 class="title">Admission Enquiry Form</h2>
+
+    <template if:false={isSubmitted}>
+
+      <lightning-combobox label="Select Department" value={deptId}
+          options={deptOptions} onchange={handleDept} required>
+      </lightning-combobox>
+
+      <lightning-input label="Full Name" value={studentName}
+          onchange={handleName} required>
+      </lightning-input>
+
+      <lightning-input type="email" label="Email Address" value={email}
+          onchange={handleEmail} required>
+      </lightning-input>
+
+      <lightning-input type="tel" label="Mobile Number" value={mobile}
+          onchange={handleMobile} required>
+      </lightning-input>
+
+      <lightning-input type="date" label="Date of Birth" value={dob}
+          onchange={handleDob} required>
+      </lightning-input>
+
+      <!-- Aadhaar Number Field -->
+
+      <lightning-input
+          type="text"
+          label="Aadhaar Number"
+          value={aadhaar}
+          maxlength="12"
+          message-when-pattern-mismatch="Enter valid 12 digit Aadhaar Number"
+          onchange={handleAadhaar}
+          required>
+      </lightning-input>
+
+      <lightning-input type="number" label="10th Percentage" value={tenth}
+          onchange={handleTenth} min="0" max="100" step="0.01" required>
+      </lightning-input>
+
+      <lightning-input type="number" label="12th Percentage" value={twelfth}
+          onchange={handleTwelfth} min="0" max="100" step="0.01" required>
+      </lightning-input>
+
+      <template if:true={isPG}>
+          <lightning-input type="number" label="UG Percentage" value={ugPercent}
+              onchange={handleUG} min="0" max="100" step="0.01" required>
+          </lightning-input>
+      </template>
+
+      <template if:true={errorMessage}>
+          <p class="error-msg">{errorMessage}</p>
+      </template>
+
+      <lightning-button label="Submit Enquiry" variant="brand"
+          onclick={handleSubmit} disabled={isLoading}>
+      </lightning-button>
+
+    </template>
+
+    <template if:true={isSubmitted}>
+      <div class="success-box">
+          <p class="success-title">Enquiry Submitted Successfully!</p>
+          <p>Your Enquiry Number: <strong>{enquiryNumber}</strong></p>
+
+          <template if:true={isEligible}>
+              <p class="eligible-msg">You are eligible! Check your email for next steps.</p>
+          </template>
+
+          <template if:false={isEligible}>
+              <p class="ineligible-msg">Your application does not meet eligibility criteria.</p>
+          </template>
+
+      </div>
+    </template>
+
+  </div>
+</template>

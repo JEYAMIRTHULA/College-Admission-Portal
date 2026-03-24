@@ -1,0 +1,90 @@
+<template>
+
+    <div class="seat-container">
+
+        <h2 class="title">Department Seat Availability</h2>
+
+        <template if:true={isLoading}>
+
+            <lightning-spinner alternative-text="Loading seats..." size="medium"></lightning-spinner>
+
+        </template>
+
+        <template if:false={isLoading}>
+
+            <template if:true={departments.data}>
+
+                <div class="dept-grid">
+
+                    <template for:each={departments.data} for:item="dept">
+
+                        <div key={dept.Id} class="dept-card">
+
+                            <h3 class="dept-name">{dept.Name}</h3>
+
+                            <p class="dept-code">
+                                {dept.Department_Code__c} | {dept.Programme_Type__c}
+                            </p>
+
+                            <div class="seat-info">
+
+                                <span class="seats-avail">{dept.Available_Seats__c}</span>
+
+                                <span class="seats-label">
+                                    / {dept.Total_Seats__c} Seats Available
+                                </span>
+
+                            </div>
+
+                            <p class="fee">
+
+                                Annual Fees: {dept.Annual_Fees__c}
+
+                            </p>
+
+                            <template if:true={dept.hasSeats}>
+
+                                <lightning-badge
+                                    label="Open"
+                                    class="badge-open">
+                                </lightning-badge>
+
+                            </template>
+
+                            <template if:false={dept.hasSeats}>
+
+                                <lightning-badge
+                                    label="Full"
+                                    class="badge-full">
+                                </lightning-badge>
+
+                            </template>
+
+                            <lightning-button
+                                label="Check Eligibility"
+                                variant="brand"
+                                data-id={dept.Id}
+                                onclick={handleCheckEligibility}>
+                            </lightning-button>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </template>
+
+            <template if:true={departments.error}>
+
+                <p class="error-msg">
+                    Unable to load departments. Please try again.
+                </p>
+
+            </template>
+
+        </template>
+
+    </div>
+
+</template>

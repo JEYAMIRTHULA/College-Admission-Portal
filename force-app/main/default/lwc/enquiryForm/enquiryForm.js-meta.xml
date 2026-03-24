@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <!-- Properties supported for these targets -->
+        <targetConfig targets="lightningCommunity__Default,lightning__AppPage,lightning__RecordPage,lightning__HomePage">
+            <property
+                name="title"
+                type="String"
+                label="Form Title"
+                default="Admission Enquiry Form"
+                description="Heading displayed at the top of the enquiry form"/>
+            <property
+                name="submitButtonLabel"
+                type="String"
+                label="Submit Button Label"
+                default="Submit Enquiry"
+                description="Label text for the submit button"/>
+            <property
+                name="showUGField"
+                type="Boolean"
+                label="Always Show UG Percentage Field"
+                default="false"
+                description="If true, UG % field is always visible. If false, it appears only for PG departments."/>
+        </targetConfig>
+        <!-- lightningCommunity__Page cannot have properties and does not support supportedFormFactors. 
+             Provide an empty targetConfig element is not allowed either, so remove it entirely. -->
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <!-- Expose to Experience Builder page surfaces -->
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <!-- Optionally expose to App Builder home/record pages if desired
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordPage</target>
+        -->
+    </targets>
+    <!-- lightningCommunity__Page doesn’t support per-instance properties.
+         Remove property configs to resolve: "The 'property' tag isn't supported for lightningCommunity__Page" -->
+</LightningComponentBundle>

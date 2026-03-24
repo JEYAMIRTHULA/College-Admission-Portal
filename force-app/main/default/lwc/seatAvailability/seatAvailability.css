@@ -1,0 +1,220 @@
+/* PAGE BACKGROUND */
+
+:host{
+    display:block;
+    min-height:100vh;
+    padding:40px;
+
+    background: linear-gradient(-45deg,#1e3c72,#2a5298,#00c6ff,#0072ff);
+    background-size:400% 400%;
+    animation:gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+
+/* MAIN CONTAINER */
+
+.seat-container{
+
+    max-width:1200px;
+    margin:auto;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.18);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.35),
+        inset 0 0 10px rgba(255,255,255,0.2);
+}
+
+
+/* TITLE */
+
+.title{
+
+    text-align:center;
+
+    font-size:32px;
+
+    font-weight:700;
+
+    color:white;
+
+    margin-bottom:30px;
+
+    letter-spacing:1px;
+
+    text-shadow:0 0 12px rgba(0,255,255,0.8);
+}
+
+
+/* GRID LAYOUT */
+
+.dept-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+}
+
+
+/* DEPARTMENT CARD */
+
+.dept-card{
+
+    background:white;
+
+    padding:22px;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+
+    transition:all 0.3s ease;
+}
+
+.dept-card:hover{
+
+    transform:translateY(-6px) scale(1.02);
+
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+}
+
+
+/* DEPARTMENT NAME */
+
+.dept-name{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#0070d2;
+
+    margin-bottom:6px;
+}
+
+
+/* DEPARTMENT CODE */
+
+.dept-code{
+
+    font-size:14px;
+
+    color:#555;
+
+    margin-bottom:12px;
+}
+
+
+/* SEAT INFO */
+
+.seat-info{
+
+    margin:12px 0;
+
+    font-size:16px;
+}
+
+.seats-avail{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#2ecc71;
+}
+
+.seats-label{
+
+    font-size:14px;
+
+    color:#555;
+}
+
+
+/* FEE */
+
+.fee{
+
+    margin:10px 0;
+
+    font-weight:600;
+
+    color:#444;
+}
+
+
+/* BADGES */
+
+.badge-open{
+
+    --sds-c-badge-color-background:#2ecc71;
+
+    color:white;
+
+    margin-bottom:10px;
+}
+
+.badge-full{
+
+    --sds-c-badge-color-background:#e74c3c;
+
+    color:white;
+
+    margin-bottom:10px;
+}
+
+
+/* BUTTON */
+
+lightning-button{
+
+    margin-top:10px;
+
+    --sds-c-button-brand-color-background:#0070d2;
+    --sds-c-button-brand-color-background-hover:#0056a3;
+
+    font-weight:bold;
+}
+
+lightning-button:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:0 6px 15px rgba(0,112,210,0.5);
+}
+
+
+/* ERROR MESSAGE */
+
+.error-msg{
+
+    color:#e74c3c;
+
+    font-weight:600;
+
+    text-align:center;
+
+    background:#ffeaea;
+
+    padding:10px;
+
+    border-radius:6px;
+
+    border-left:5px solid #e74c3c;
+}

@@ -1,0 +1,41 @@
+<template>
+
+    <div class="search-container">
+
+        <h2 class="title">Search Application</h2>
+
+        <lightning-input
+            label="Enquiry Number"
+            value={enquiryNumber}
+            onchange={handleEnquiry}>
+        </lightning-input>
+
+        <lightning-input
+            label="Aadhar Number"
+            value={aadharNumber}
+            onchange={handleAadhar}>
+        </lightning-input>
+
+        <lightning-button
+            label="Search Application"
+            variant="brand"
+            onclick={handleSearch}>
+        </lightning-button>
+
+        <template if:true={errorMessage}>
+            <p class="error">{errorMessage}</p>
+        </template>
+
+        <!-- CHILD COMPONENT -->
+
+        <template if:true={showTracker}>
+
+            <c-application-tracker
+                enquiry={enquiry}>
+            </c-application-tracker>
+
+        </template>
+
+    </div>
+
+</template>
